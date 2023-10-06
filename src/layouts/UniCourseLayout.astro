@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import BaseLayout from "./BaseLayout.astro";
 
-const { CourseName, CourseInitials } = Astro.props;
+const { CourseName, CourseInitials, CourseFinalLink } = Astro.props;
 ---
 
 <BaseLayout>
@@ -12,4 +12,25 @@ const { CourseName, CourseInitials } = Astro.props;
     slot="head"
   />
   <h1 class="text-center">{CourseName}</h1>
+
+  <details>
+    <summary
+      ><h4 class="cursor-pointer text-center">Assignments (click to Open)</h4>
+    </summary>
+    <slot name="list" />
+  </details>
+  <a href={CourseFinalLink}>
+    <h4 class="cursor-pointer text-center">Final Project</h4>
+  </a>
 </BaseLayout>
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  ::marker {
+    display: none;
+  }
+  summary {
+    list-style: none;
+  }
+</style>

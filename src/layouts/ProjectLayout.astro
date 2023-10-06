@@ -4,7 +4,7 @@ import BaseHead from "../components/BaseHead.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"project">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
@@ -16,9 +16,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       <FormattedDate date={pubDate} />
       {
         updatedDate && (
-          <div class="last-updated-on">
+          <p>
             Last updated on <FormattedDate date={updatedDate} />
-          </div>
+          </p>
         )
       }
     </div>

@@ -1,30 +1,24 @@
 ---
+export const prerender = true;
 import BaseHead from "../../components/BaseHead.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-
+import { getCollection } from "astro:content";
 const SITE_TITLE = "Uni";
 const SITE_DESCRIPTION = "All of my Uni related Stuff";
-
-const courses = [
-  { label: "Einführung in die Medieninformatik", link: "em" },
-  { label: "Fortgeschrittene Interaktionstechnologien", link: "fit" },
-  { label: "Digital Media Technologien", link: "dmt" },
-  { label: "Projektmanagement", link: "pm" },
-  { label: "Digital Fabrication", link: "df" },
-  { label: "Webentwicklung", link: "we" },
-];
+const courses = await getCollection("course");
 ---
 
 <BaseLayout>
   <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} slot="head" />
   <h1 class="text-center">Courses</h1>
   <div class="grid lg:grid-cols-2 gap-8 mt-8">
+    {courses}
     {
       courses.map((course) => {
         return (
-          <a href={"uni/" + course.link}>
+          <a href={"uni/" + course.data.initials}>
             <div class="h-32 rounded-md border-zinc-700 border-2 flex flex-col align-middle justify-center">
-              <h4 class="text-center">{course.label}</h4>
+              <h4 class="text-center">{course.data.title}</h4>
             </div>
           </a>
         );
