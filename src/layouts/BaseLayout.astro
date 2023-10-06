@@ -1,9 +1,7 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Blurdot from "../components/blurdot.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <!doctype html>
@@ -12,7 +10,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <slot name="head" />
   </head>
   <body class="flex-col flex">
-    <Header title={SITE_TITLE} />
+    <Header />
     <main class="min-h-full">
       <Blurdot class="bg-indigo-700 h-[300px] w-[300px] top-48 right-20" />
       <Blurdot class="bg-amber-300 h-[180px] w-[180px] left-48 bottom-20" />
