@@ -1,0 +1,15 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+const { SITE_TITLE } = Astro.props;
+---
+
+<BaseLayout>
+  <BaseHead
+    title={"Uni - " + SITE_TITLE}
+    description={"All of Material for the course " + SITE_TITLE}
+    slot="head"
+  />
+  <h1 class="text-center">{SITE_TITLE}</h1>
+</BaseLayout>

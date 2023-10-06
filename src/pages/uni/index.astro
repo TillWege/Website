@@ -4,9 +4,31 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const SITE_TITLE = "Uni";
 const SITE_DESCRIPTION = "All of my Uni related Stuff";
+
+const courses = [
+  { label: "Einführung in die Medieninformatik", link: "em" },
+  { label: "Fortgeschrittene Interaktionstechnologien", link: "fit" },
+  { label: "Digital Media Technologien", link: "dmt" },
+  { label: "Projektmanagement", link: "pm" },
+  { label: "Digital Fabrication", link: "df" },
+  { label: "Webentwicklung", link: "we" },
+];
 ---
 
 <BaseLayout>
   <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} slot="head" />
-  <h1 class="text-center">ToDo</h1>
+  <h1 class="text-center">Courses</h1>
+  <div class="grid lg:grid-cols-2 gap-8 mt-8">
+    {
+      courses.map((course) => {
+        return (
+          <a href={"uni/" + course.link}>
+            <div class="h-32 rounded-md border-zinc-700 border-2 flex flex-col align-middle justify-center">
+              <h4 class="text-center">{course.label}</h4>
+            </div>
+          </a>
+        );
+      })
+    }
+  </div>
 </BaseLayout>
