@@ -2,6 +2,7 @@
 export const prerender = true;
 import { type CollectionEntry, getCollection } from "astro:content";
 import UniCourseLayout from "../../layouts/UniCourseLayout.astro";
+import Path from 'path'
 
 export async function getStaticPaths() {
   const courses = await getCollection("course");
@@ -28,12 +29,15 @@ assignments = assignments.sort((a, b) => {
     return 0;
   }
 });
+
+const projFiles = await Astro.glob("../../content/project/*.md")
+const projFile = projFiles.find((f)=> Path.parse(f.file).name == course.slug)
 ---
 
 <UniCourseLayout
   CourseName={course.data.title}
   CourseInitials={course.data.initials}
-  CourseFinalLink={"/project/" + course.data.initials}
+  CourseFinalLink={projFile ? "/project/" + course.data.initials : ""}
 >
   {assignments.length != 0 && <details slot="list">
     <summary

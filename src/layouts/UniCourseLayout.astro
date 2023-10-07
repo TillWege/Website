@@ -14,7 +14,11 @@ const { CourseName, CourseInitials, CourseFinalLink } = Astro.props;
   <h1 class="text-center">{CourseName}</h1>
 
   <slot name="list" />
-  <a href={CourseFinalLink}>
-    <h4 class="cursor-pointer text-center">Final Project</h4>
-  </a>
+  {
+    CourseFinalLink && (
+      <a href={CourseFinalLink}>
+        <h4 class="cursor-pointer text-center">Final Project</h4>
+      </a>
+    )
+  }
 </BaseLayout>
