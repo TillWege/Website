@@ -16,7 +16,7 @@ const courses = await getCollection("course");
     {
       courses.map((course) => {
         return (
-          <a href={"uni/" + course.data.initials}>
+          <a href={"/uni/" + course.data.initials}>
             <div class="h-32 rounded-md border-zinc-700 border-2 flex flex-col align-middle justify-center">
               <h4 class="text-center">{course.data.title}</h4>
             </div>
