@@ -13,24 +13,8 @@ const { CourseName, CourseInitials, CourseFinalLink } = Astro.props;
   />
   <h1 class="text-center">{CourseName}</h1>
 
-  <details>
-    <summary
-      ><h4 class="cursor-pointer text-center">Assignments (click to Open)</h4>
-    </summary>
-    <slot name="list" />
-  </details>
+  <slot name="list" />
   <a href={CourseFinalLink}>
     <h4 class="cursor-pointer text-center">Final Project</h4>
   </a>
 </BaseLayout>
-<style>
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-  ::marker {
-    display: none;
-  }
-  summary {
-    list-style: none;
-  }
-</style>

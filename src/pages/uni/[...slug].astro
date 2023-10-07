@@ -35,20 +35,36 @@ assignments = assignments.sort((a, b) => {
   CourseInitials={course.data.initials}
   CourseFinalLink={"/project/" + course.data.initials}
 >
-  <ol slot="list">
-    {
-      assignments.map((post) => {
-        return (
-          <a href={"/assignment/" + post.slug}>
-            <li>{post.data.title}</li>
-          </a>
-        );
-      })
-    }
-  </ol>
-  <style>
-    ol {
-      list-style-type: None;
-    }
-  </style>
+  {assignments.length != 0 && <details slot="list">
+    <summary
+      ><h4 class="cursor-pointer text-center">Assignments (click to Open)</h4>
+    </summary>
+    <ol>
+      {
+        assignments.map((post) => {
+          return (
+            <a href={"/assignment/" + post.slug}>
+              <li>{post.data.title}</li>
+            </a>
+          );
+        })
+      }
+    </ol>
+    <style>
+      ol {
+        list-style-type: None;
+      }
+    </style>
+  </details>}
 </UniCourseLayout>
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  ::marker {
+    display: none;
+  }
+  summary {
+    list-style: none;
+  }
+</style>
