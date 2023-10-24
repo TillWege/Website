@@ -121,3 +121,6 @@ I could now place all of the components into the shell. To correctly create the 
   (Final result Mechboy top plate)
 </p>
 
+Files:
+
+All model files and reference images used can be found [here](https://github.com/TillWege/dig-fab/tree/main/assignment%202)
