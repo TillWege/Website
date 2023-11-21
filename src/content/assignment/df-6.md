@@ -217,3 +217,21 @@ Using this code, the final simulation result would behave like this:
 ![Schematic LEDs + Buttons](/df/df-6c.gif)
 
 The `.brd`-File for this schematic can be found [here](https://github.com/TillWege/dig-fab/tree/main/assignment%206)
+
+## Board creation
+
+Creating the board was pretty easy after the Simulation. The parts needed for this circuit were as followed:
+
+- Arduino Uno
+- 3 LEDs
+- 2 Push Buttons
+- 3 ~220Ω Resistors
+- lots of jumper wires
+
+With these Components it was easy to recreate the Schamtic on a breadboard. The final result looked like this:
+
+![Breadboard](/df/df-6d.jpg)
+
+After flashing the code previously written in TinkerCAD onto the Arduino, the board worked as intended. The LEDs could be toggled on and off using the buttons. The LEDs would also be toggled in a sequence, starting with the first LED and ending with the third LED.
+
+![Demo Video](/df/df-6e.gif)
