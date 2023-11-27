@@ -1,5 +1,5 @@
 ---
-number: 5
+number: 6
 title: 'Assignment 6 - Embedded Programming'
 course: 'df'
 pubDate: 'Nov 20 2023'
