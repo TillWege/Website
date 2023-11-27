@@ -145,6 +145,14 @@ I first read both, the potentiometer and the ultrasonic sensor. I then mapped th
 
 ## Real-World Implementation
 
+The assembled circuit looks as follows:
+
+![Circuit](/df/df-7e.jpeg)
+
+This circuit follows the previously designed layout pretty closely. On of the main differnces is the pins to which the individual devices were connected.
+
+The Code used is also very similar to the previously tested Code. The only difference is the address of the LCD Display. The address of the LCD Display used in the real world is ``0x27``. This address was found out by using the ``I2C Scanner``-Sketch from the Arduino IDE Examples.
+
 Modified Code:
 ```c
 #include <LiquidCrystal_I2C.h>
@@ -209,3 +217,5 @@ void loop() {
   delay(100);
 }
 ```
+
+A demo of the Circuit working as described can be viewed [here](https://youtube.com/shorts/BzyweoFtoUw)
