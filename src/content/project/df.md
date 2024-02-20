@@ -2,7 +2,7 @@
 title: 'Fundementals of digital fabrication - Final Project'
 description: 'Snakeboy'
 pubDate: 'Feb 16 2024'
-heroImage: ''
+heroImage: '/df/project/poster.jpg'
 ---
 
 # Idea
@@ -17,9 +17,15 @@ My idea was to fabricate the case using 3D-Printing. I chose this method primari
 
 The top part of the case would house the screen and have a cutout for the joystick. The bottom part of the case would house the microcontroller and all other components. The case was designed to be held together using screws. As screwing into plastic (and especially 3D-Printed parts) can be difficult, I chose to use heat-set inserts to make the case easier to assemble. These inserts could be heated up using a soldering iron and then pressed into the plastic. Once cooled down, the inserts would be held in place by the plastic and would allow for screws to be used to hold the case together.
 
+The case would also need to provide the specific cutouts and mounting points for the different components. This included a cutout for the USB-C charging board, a cutout for the reset button, a hole at the bottom of case for the speaker, mounts in the lower half and a cutout at the top-plate for the joystick, and a cutout with mounting hole in the top-plate for the screen. 
+
+Internally the case also got divided into multiple smaller compartments. The battery would be housed in a separate compartment at the bottom of the case between the speaker and the controller compartment. The speaker in the bottom got a mounting bracket such that it would be held in place by the case. For the joystick two mounting pins were placed into the case. For these pins I also used heat-set inserts. The controller board would be housed in the main compartment of the case. The USB-C charging board would be housed next to it at the top of the case. Next to this would also be the cutout for the power switch, which would be inserted into the case aswell. The reset button would be placed at the right side of the case below the mainboard. The screen would be mounted into the top-plate of the case using M3-Screws and nuts. 
+
+All of these specific design considerations can be seen in the final design of the case. They also led to a lot of prototyping beeing necessary.
+
 The final design of the case can be seen below:
 
-!TODO
+![Case](/df/project/case-2.jpg)
 
 # Electrical Hardware
 The electrical hardware for this project went through multiple different iterations. Initially I planned on using mechanical keyboard switches for the buttons, but with time this proved both, more difficult and also less user friendly. In the end I settled on using a simple 2-Axis joystick for input.
@@ -31,10 +37,6 @@ Besides the methode of input, it was also necessary to provide some sort of outp
 As another form of feedback for the user I also chose to add a speaker into the project. Normally, adding a speaker to an electrical project can prove to be more difficult than expected. In most cases you would need some sort of amplifier to drive the speaker. Controlling the speaker itself can also require a non-trivial amount of code and computing power. Especially on a limited plattform like the ATtiny1614 this could prove difficult. To solve this problem I chose to use a DFPlayer Mini. The DFPlayer Mini is a small MP3 player module that can be controlled using a simple serial connection between it, and the microcontroller. The module can be used to play MP3 files from a microSD card. The module also has a built in amplifier and can drive a small speaker directly. This made it very easy to add sound to the project.
 
 Other components used in the project included a small lithium polyer battery, a USB-C charging board, a power switch and a reset button. A full list of components (or very close analogs in cases were the orignal is no longer availabe) can be found in the bill of materials.
-
-The final schematic for the project can be seen below:
-
-!TODO
 
 # Programming
 The programming of the Snakeboy was done using the Arduino IDE. As such the code for the project is written in C++. The code for the project can be found [here](https://github.com/TillWege/dig-fab/blob/main/Project/Code/Code.ino).
@@ -54,19 +56,29 @@ The game loop is also responsible for playing sound effects. The sound effects a
 Overall the coding of the project was relatively straight forward. The most most difficult part was the display initialization. It was also somewhat tricky to fit all of the games logic into the limited amount of memory available on the ATtiny1614. This occured for both, the available RAM (which leads to limits placed on the used datastructure) and the available program memory.
 
 # Discarded Ideas & Problems
-The project went through multiple different iterations. The first iteration of the project was to use a mechanical keyboard for input. This was discarded as it was both, more difficult to implement and less user friendly. For this idea I also produced a small breakout PCB. A rendering of the PCB can be seen below:
+The project went through multiple different iterations. The first iteration of the project was to use a mechanical keyboard for input. This was discarded as it was both, more difficult to implement and less user friendly. For this idea I also produced a small breakout PCB. The finished PCB can be seen below:
 
-!TODO
+![Swich-Board front](/df/project/switch-2.jpg)
+
+![Swich-Board back](/df/project/switch-1.jpg)
 
 The second iteration of the project was to use a small 8x8 LED matrix for the display. This was discarded as it just didnt feel right for snake.
 
 Another process of iteration for this process was the case design. The initial for the case was significantly wider. One of the more refined versions of the initial case design can be seen below:
 
-!TODO
+![Case old](/df/project/case-old.jpg)
 
-This idea was scraped as it was unnecessarily large and would have been more time consuming to print without giving any real benefits. It would later turn out however, that the final case design was somewhat cramped to fit all of the required wires into it.
+This idea was scraped as it was unnecessarily large and would have been more time consuming to print without giving any real benefits. It would later turn out however, that the final case design was somewhat cramped to fit all of the required wires into it. Throughout the entire case design process it was also necessary to make multiple different prototypes to test the fit of the different components. This was especially necessary for the joystick and the screen. All in all i ended up printing 5 different versions of the case and about 8 different versions of the top-plate.
+
+![Case prototypes](/df/project/prototypes.jpg)
+
+The initial design of the snakeboy also had a potentiometer instead of a reset button. This potentiometer was supposed to be used to control the volume of the speaker. This was discarded as the joystick already took up the available analogue-capable pins on the microcontroller. The reset button was then added to the design to replace the potentiometer. Due do this the case design still contains the small mounting slots that would have been used to keep the potentiometer in place.
 
 The wiring was the most difficult part of the project. As the project mostly used Pin-Headers almost all of the wires were jumper wires. As these wires can be somewhat stiff this made the wiring more difficult to manage and with all components installed the case got somewhat cramped.
+
+This picture gives an idea for how space the components alone took up in the case:
+
+![Case cramped](/df/project/wiring.jpg)
 
 # Final Assembly & Demo
 The final assembly of the project was relatively straight forward. The case was printed and the inserts were installed. After that, the components were installed into case piece by piece.
@@ -85,12 +97,16 @@ The last component to be installed was the joystick. The joystick was installed 
 
 The final assmebly of the project can be seen below:
 
-![final assembly](/df/df-pa.jpeg)
+![final assembly](/df/project/finished.jpeg)
 
 # Conclusion
-All in all the project was a success. The final product was a small, portable, and fun to use game console. A video of the final product can be found [here](https://youtube.com/shorts/-dKDbUvck7I?feature=share).
+The final product was a small, portable, and fun to use game console. A video of the final product can be found [here](https://youtube.com/shorts/-dKDbUvck7I?feature=share).
 
 The project was also a good learning experience. It was a good way to learn about the limitations of the ATtiny1614 and how to work around them. It was also a good way to further my skills of CAD-Design and 3D printing.
+
+After testing it also turned out that the battery life of the project was quite good. The project could be used for multiple hours without needing to be recharged. The sound quality of the speaker was also quite good. The sound effects were loud and clear. The screen was initially somewhat difficult to read, but after adjusting the scaling so that the displayed pixels were 3x3 pixels in size, the screen was quite readable.
+
+All in all the project was a success and it was a fun way to end the course.
 
 # Bill of Materials
 - The case was printed using [Creality Hyper PLA](https://www.amazon.de/Creality-Offizielles-Hochgeschwindigkeitsdruck-langlebig-Ma%C3%9Fgenauigkeit/dp/B0C33XPV9D).
@@ -102,4 +118,4 @@ The project was also a good learning experience. It was a good way to learn abou
 
 # Files
 All of the files for the project can be found in the [Github Repository](
-https://github.com/TillWege/dig-fab/tree/main/Project). The different case versions can be found in the `Case`-Folder. The used PCB-Designs can be found in the `PCBs`-Folder. The code for the project can be found in the `Code`-Folder.
+https://github.com/TillWege/dig-fab/tree/main/Project). The different discareded case versions can be found in the `Case`-Folder. The used PCB-Designs can be found in the `PCBs`-Folder. The code for the project can be found in the `Code`-Folder.
