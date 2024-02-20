@@ -8,7 +8,7 @@ heroImage: '/df/project/poster.jpg'
 # Idea
 The goal for this course was learn the basics of digital fabrication. This was achieved by completing a series of assignments in which we were tasked with using the different methods. For our final project we were given the opportunity to use the skills we learned to create a project of our own choosing. I decided to create a game console that would be able to play the classic game "Snake". The console would be based on an ATtiny microcontroller and would be made using the skills I learned during the course.
 
-I choose to create a game console because I wanted to create something that would be fun to use and easy to understand. The game "Snake" was chosen because it is a simple game that is easy to implement and a well known classic.
+I choose to create a game console because I wanted to create something that would be fun to use and easy to understand. The game "Snake" was chosen because it is a simple game that is easy to implement and a well-known classic.
 
 Throughout the course this idea went through multiple different iterations. The initial version of this idea can be found [here](https://wegetill.de/assignment/df-1/).
 
@@ -21,22 +21,22 @@ The case would also need to provide the specific cutouts and mounting points for
 
 Internally the case also got divided into multiple smaller compartments. The battery would be housed in a separate compartment at the bottom of the case between the speaker and the controller compartment. The speaker in the bottom got a mounting bracket such that it would be held in place by the case. For the joystick two mounting pins were placed into the case. For these pins I also used heat-set inserts. The controller board would be housed in the main compartment of the case. The USB-C charging board would be housed next to it at the top of the case. Next to this would also be the cutout for the power switch, which would be inserted into the case aswell. The reset button would be placed at the right side of the case below the mainboard. The screen would be mounted into the top-plate of the case using M3-Screws and nuts. 
 
-All of these specific design considerations can be seen in the final design of the case. They also led to a lot of prototyping beeing necessary.
+All of these specific design considerations can be seen in the final design of the case. They also led to a lot of prototyping being necessary.
 
 The final design of the case can be seen below:
 
 ![Case](/df/project/case-2.jpg)
 
 # Electrical Hardware
-The electrical hardware for this project went through multiple different iterations. Initially I planned on using mechanical keyboard switches for the buttons, but with time this proved both, more difficult and also less user friendly. In the end I settled on using a simple 2-Axis joystick for input.
+The electrical hardware for this project went through multiple different iterations. Initially I planned on using mechanical keyboard switches for the buttons, but with time this proved both, more difficult and less user friendly. In the end I settled on using a simple 2-Axis joystick for input.
 
 The microcontroller used for this project was the ATtiny1614. More information about the production of the microcontroller can be found [here](https://wegetill.de/assignment/df-9/).
 
-Besides the methode of input, it was also necessary to provide some sort of output to the user. For this I chose to use a small 1,3 inch OLED screen. The screen was chosen because it is small and relatively easy to use. The screen was connected to the microcontroller using the I2C protocol.
+Besides the method of input, it was also necessary to provide some sort of output to the user. For this I chose to use a small 1,3-inch OLED screen. The screen was chosen because it is small and relatively easy to use. The screen was connected to the microcontroller using the I2C protocol.
 
-As another form of feedback for the user I also chose to add a speaker into the project. Normally, adding a speaker to an electrical project can prove to be more difficult than expected. In most cases you would need some sort of amplifier to drive the speaker. Controlling the speaker itself can also require a non-trivial amount of code and computing power. Especially on a limited plattform like the ATtiny1614 this could prove difficult. To solve this problem I chose to use a DFPlayer Mini. The DFPlayer Mini is a small MP3 player module that can be controlled using a simple serial connection between it, and the microcontroller. The module can be used to play MP3 files from a microSD card. The module also has a built in amplifier and can drive a small speaker directly. This made it very easy to add sound to the project.
+As another form of feedback for the user I also chose to add a speaker into the project. Normally, adding a speaker to an electrical project can prove to be more difficult than expected. In most cases you would need some sort of amplifier to drive the speaker. Controlling the speaker itself can also require a non-trivial amount of code and computing power. Especially on a limited platform like the ATtiny1614 this could prove difficult. To solve this problem, I chose to use a DFPlayer Mini. The DFPlayer Mini is a small MP3 player module that can be controlled using a simple serial connection between it, and the microcontroller. The module can be used to play MP3 files from a microSD card. The module also has a built-in amplifier and can drive a small speaker directly. This made it very easy to add sound to the project.
 
-Other components used in the project included a small lithium polyer battery, a USB-C charging board, a power switch and a reset button. A full list of components (or very close analogs in cases were the orignal is no longer availabe) can be found in the bill of materials.
+Other components used in the project included a small lithium polymer battery, a USB-C charging board, a power switch and a reset button. A full list of components (or very close analogues in cases were the original is no longer available) can be found in the bill of materials.
 
 # Programming
 The programming of the Snakeboy was done using the Arduino IDE. As such the code for the project is written in C++. The code for the project can be found [here](https://github.com/TillWege/dig-fab/blob/main/Project/Code/Code.ino).
@@ -47,13 +47,13 @@ For the different components of the project the following libraries were used:
 
 The code consists of multiple different parts.
 
-The first part of the code is the setup function and all of the fixed variable definitions. The setup function is responsible for initializing the different components of the project. This includes initializing the screen, the joystick pins and the DFPlayer Mini. The screen specifically is initialized to use the using the I2C protocol for a generic SH1106-Controller running a 128x64 pixel display.
+The first part of the code is the setup function and all the fixed variable definitions. The setup function is responsible for initializing the different components of the project. This includes initializing the screen, the joystick pins and the DFPlayer Mini. The screen specifically is initialized to use the using the I2C protocol for a generic SH1106-Controller running a 128x64 pixel display.
 
 The main part of the code is the game loop. The game loop is responsible for updating the player position (using the `move` function, checking for collisions (using the `checkGameOver`), checking if the food was collected (in the `checkFood` function), and updating the screen (using the `drawPixel` and `draw` functions. The game loop also checks for user input and updates the player direction accordingly.
 
 The game loop is also responsible for playing sound effects. The sound effects are played using the DFPlayer Mini. The sound effects are played when the player collects food.
 
-Overall the coding of the project was relatively straight forward. The most most difficult part was the display initialization. It was also somewhat tricky to fit all of the games logic into the limited amount of memory available on the ATtiny1614. This occured for both, the available RAM (which leads to limits placed on the used datastructure) and the available program memory.
+Overall, the coding of the project was relatively straight forward. The most difficult part was the display initialization. It was also somewhat tricky to fit all of the game's logic into the limited amount of memory available on the ATtiny1614. This occurred for both, the available RAM (which leads to limits placed on the used data structure) and the available program memory.
 
 # Discarded Ideas & Problems
 The project went through multiple different iterations. The first iteration of the project was to use a mechanical keyboard for input. This was discarded as it was both, more difficult to implement and less user friendly. For this idea I also produced a small breakout PCB. The finished PCB can be seen below:
@@ -64,11 +64,11 @@ The project went through multiple different iterations. The first iteration of t
 
 The second iteration of the project was to use a small 8x8 LED matrix for the display. This was discarded as it just didnt feel right for snake.
 
-Another process of iteration for this process was the case design. The initial for the case was significantly wider. One of the more refined versions of the initial case design can be seen below:
+Another case of iteration for this process was the case design. The initial for the case was significantly wider. One of the more refined versions of the initial case design can be seen below:
 
 ![Case old](/df/project/case-old.jpg)
 
-This idea was scraped as it was unnecessarily large and would have been more time consuming to print without giving any real benefits. It would later turn out however, that the final case design was somewhat cramped to fit all of the required wires into it. Throughout the entire case design process it was also necessary to make multiple different prototypes to test the fit of the different components. This was especially necessary for the joystick and the screen. All in all i ended up printing 5 different versions of the case and about 8 different versions of the top-plate.
+This idea was scraped as it was unnecessarily large and would have been more time consuming to print without giving any real benefits. It would later turn out however, that the final case design was somewhat cramped to fit all of the required wires into it. Throughout the entire case design process, it was also necessary to make multiple different prototypes to test the fit of the different components. This was especially necessary for the joystick and the screen. All in all i ended up printing 5 different versions of the case and about 8 different versions of the top-plate.
 
 ![Case prototypes](/df/project/prototypes.jpg)
 
@@ -83,11 +83,11 @@ This picture gives an idea for how space the components alone took up in the cas
 # Final Assembly & Demo
 The final assembly of the project was relatively straight forward. The case was printed and the inserts were installed. After that, the components were installed into case piece by piece.
 
-The first component to be installed was the controller board. It was secured using two mainboard standoffs that got heat-pressed into the case. After that the mainboard could be screwed into those standoffs. The battery was then installed into the specifially designed comportment.
+The first component to be installed was the controller board. It was secured using two mainboard standoffs that got heat-pressed into the case. After that the mainboard could be screwed into those standoffs. The battery was then installed into the specifically designed comportment.
 
 The battery was then connected to the USB-C charging board. This board was placed into the USB-C cutout in the case. The ground pin of the charging board was then connected to the ground pin of the controller board through the power switch. The positive pin of the charging board was then connected to the positive pin of the controller board.
 
-After this the reset switch was inserted into the cutout hole on the right side of the case. This was then wired into vcc on one side, and the GPIO-Pin that was used as the reset pin on the controller board and vcc through a pull-down resistor.
+After this the reset switch was inserted into the cutout hole on the right side of the case. This was then wired into vcc on one side, and the GPIO-Pin that was used as the reset pin on the controller board and ground through a pull-down resistor.
 
 After this the speaker was installed into the case in its designed slot at the bottom. The speaker was then connected to the DFPlayer Mini. The DFPlayer Mini was then installed into the case and connected to the controller board using jumper wires.
 
@@ -95,7 +95,7 @@ The next component was the OLED screen. The screen was installed into the top pl
 
 The last component to be installed was the joystick. The joystick was installed onto the Joystick-Mounts of the case using M3-Screws. The joystick was then connected to the controller board using jumper wires.
 
-The final assmebly of the project can be seen below:
+The final assembly of the project can be seen below:
 
 ![final assembly](/df/project/finished.jpeg)
 
@@ -118,4 +118,4 @@ All in all the project was a success and it was a fun way to end the course.
 
 # Files
 All of the files for the project can be found in the [Github Repository](
-https://github.com/TillWege/dig-fab/tree/main/Project). The different discareded case versions can be found in the `Case`-Folder. The used PCB-Designs can be found in the `PCBs`-Folder. The code for the project can be found in the `Code`-Folder.
+https://github.com/TillWege/dig-fab/tree/main/Project). The different discarded case versions can be found in the `Case`-Folder. The used PCB-Designs can be found in the `PCBs`-Folder. The code for the project can be found in the `Code`-Folder.
